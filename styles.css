@@ -1,11 +1,21 @@
-.card {
-  margin: 0 auto;
-  padding: 10px;
-  float: none;
-  margin-top: 20px;
+/* ANIMATION */
+
+@keyframes loading {
+  0% {
+    opacity: 0.5;
+  } 25% {
+    opacity: 1;
+  } 50% {
+    opacity: 0.5;
+  } 75% {
+    opacity: 1;
+  } 100% {
+    opacity: 0.5;
+  }
 }
 
-#dialer {
+/* DISPLAY NONE */
+#root-scene {
   display: none;
 }
 
@@ -13,29 +23,278 @@
   display: none;
 }
 
-#dialer .unhold, #dialer .hold, #dialer .mute, #dialer .unmute, #dialer .merge, #dialer .unmerge, #dialer .atxfer, #dialer .transfer, #dialer .video-call, #dialer video  {
+#root-scene .unhold, #root-scene .hold, #root-scene .mute, #root-scene .unmute, #root-scene .merge, #root-scene .unmerge, #root-scene .atxfer, #root-scene .transfer, #root-scene .video-call, #root-scene .expand, #root-scene .reduce, #root-scene video  {
   display: none;
 }
 
-video.local {
-  width: 200px;
-  height: 200px;
-  display: block;
-  float: left;
-  margin-right: 30px;
+/* MAIN */
+
+#authentication.row { 
+  margin: 0 !important;
 }
 
-video.remote {
-  display: block;
-  width: 200px;
-  height: 200px;
-}
-.videos {
-  overflow: auto;
+.btn {
+  text-transform: uppercase;
 }
 
-#dialers .card {
-  width: 500px !important;
+.btn-flat {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background-image: none;
+  background: #515454;
+  border: 0;
+}
+
+.bg-success:hover {
+  background: #fff;
+}
+
+.two {
+  background: #98c451;
+  display: flex;
+  align-items: center;
+}
+
+.alert {
+  margin-top: 40px;
+}
+
+.btn {
+  margin-top: 20px;
+}
+
+.background {
+  width: auto;
+  height: 100vh;
+  margin-left: -120px;
+}
+
+.col {
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* LOADER */
+
+#loader {
+  position : fixed;
+  z-index: 9999;
+  background-image: url('./img/back.jpeg');
+  background-size: cover;
+  top : 0;
+  left : 0;
+  height : 100%;
+  width : 100%;
+  cursor : wait;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#loader img {
+  width: 400px;
+  animation-name: loading;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+#loader p {
+  animation-name: loading;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* LOGIN */
+
+/* LOGIN left part */
+
+.one {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wazo-logo {
+  display: block;
+  margin: auto;
+  width: 70%;
+  margin-bottom: 20px;
+}
+
+label {
+  color: rgba(0,0,0,0.4);
+  font-weight: bold;
+  font-size: 12px;
+}
+
+input.login {
+  margin-bottom: 3rem;
+  color: #515454 !important;
+  background-color: transparent !important;
+  border: none;
+  border-bottom: #515454 solid 1px;
+  font-size: 16px;
+}
+
+input.login:focus {
+  outline: none;
+  border-bottom: 2px solid #98c451;
+}
+
+::placeholder {
+  color: #515454;
+  font-style: italic;
+}
+
+/* LOGIN right part */
+
+.bg-wazo {
+  background-color: #98c451;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.learn-more {
+  background: #515454;
+}
+
+.learn-more > a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.right-quote {
+  color: #fff;
+  text-align: center;
+  font-size: 3rem;
+  padding: 0 20rem;
+  font-weight: bold;
+}
+
+.right-content {
+  text-align: center;
+}
+
+/* PHONE */
+
+.card {
+  margin: 0 auto;
+  padding: 10px;
+  float: none;
+}
+
+.actions-btns {
+  border: none;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin: 1rem;
+}
+
+main {
+  background-image: url("./img/back.jpeg");
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scene {
+  background: rgba(0,0,0, 0.6);
+  position: absolute;
+  top: 2rem;
+  left: 0;
+  width: 100vw;
+  height: 96vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.call-page {
+  background: rgba(0,0,0, 0.6);
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.isVideo .call-page {
+  justify-content: flex-end;
+  background: transparent;
+}
+
+#status {
+  color: #98c451;
+  font-style: italic;
+  margin-top: 4px;
+}
+
+.timer {
+  color: #fff;
+  font-size: 12px;
+  opacity: .5;
+} 
+
+.oncall {
+  font-size: 2.5rem;
+  font-style: normal !important;
+  color: #fff !important;
+  top: 3rem;
+  z-index: 5;
+}
+
+/* PHONE header */
+
+#logout {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: bold;
+}
+
+#logout:hover {
+  color: #fff;
+}
+
+/* PHONE dialer */
+
+.number {
+  background: #000;
+  border: none;
+  width: 345px;
+  height: 60px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.number:focus {
+  background: #000;
+  border: 1px solid #98c451;
+  color: #fff;
+  outline: none;
+}
+
+#dialer > label {
+  color: #fff;
+  font-weight: lighter;
+  padding-bottom: 2rem;
 }
 
 h3 {
@@ -43,85 +302,150 @@ h3 {
   text-align: center;
 }
 
-#full-name {
-  font-size: 18px;
-  padding-top: 5px;
+#dialer {
+  width: 398px;
+  height: 341px;
+  border: none;
+  background: rgba(0,0,0,0.8);
+  padding: 2rem 2rem 0;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.greeter {
+  color: #fff;
+  font-size: 32px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  padding: 0 30px;
+}
+
+.buttons-call {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+/* PHONE incoming call */
+
+.modal-content {
+  display: fixed;
+  border-radius: 10px;
+  top: 28vh;
+  background:rgba(0,0,0, 0.6);
+  color: #fff;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: center;
+  border: none;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.name-called {
+  font-style: italic;
+}
+
+/* VIDEO */ 
+
+.remote,
+.local {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remote ,
+.local {
+  background: rgba(0,0,0, .8);
+  overflow: hidden;
+  line-height: 0;
+}
+
+.local {
+  border-radius: 15px;
+  position: absolute;
+  left: 2rem;
+  bottom: 2rem;
+  z-index: 999;
+}
+
+.remote {
+  flex: 3 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remote {
+  flex: 1 25%;
+}
+
+.local video {
+  width: 200px;
+  height: auto;
+}
+
+.local .buttons {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.remote video {
+  width: 100vw;
+  height: 100vh;
+}
+
+.videos {
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+video {
+  object-fit: contain;
+}
+
+.expand-video {
+  object-fit: cover;
+}
+
+.background-videocall {
+  background: rgba(0,0,0, 0.6);
+  height: 100vh;
+  width: 100vw;
+}
+
+.on-videocall {
+  font-size: 1.5rem;
+  font-style: normal !important;
+  color: #fff !important;
+  z-index: 5;
+  top: 28rem;
+}
+
+.local-btns {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+h3.contact {
+  color: #fff;
   text-align: center;
-}
-
-input.login {
-    margin-bottom: 10px;
-    color: #515454 !important;
-    background-color: transparent !important;
-    border: #515454 solid 1px !important;
-}
-
-::placeholder {
-  color: #515454 !important;
-}
-
-.btn-primary:active,
-.btn-primary.hover,
-.btn-primary:hover {
-    background: #eebf3f !important;
-    border-color: #eebf3f !important;
-}
-
-.btn-flat {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-    background-image:none;
-    background: #515454;
-    border:0;
-}
-
-.center {
-    margin: auto;
-    width: 70%;
-    margin-top: 80px;
-}
-
-.one {
-    background: #fff;
-    z-index: 10;
-}
-
-.two {
-    background: #98c451;
-}
-
-.btn {
-    margin-top: 20px;
-}
-
-.wazo-logo {
-    display: block;
-    margin: auto;
-    width: 70%;
-    margin-bottom: 20px;
-}
-
-.alert {
-    margin-top: 40px;
-}
-
-.background {
-    width: auto;
-    height: 100vh;
-    margin-left: -120px;
-}
-
-.col {
-    padding: 0;
-    margin: 0;
-    min-height: 100vh;
-}
-
-#phone {
-  padding-top: 5rem;
-}
-
-.bg-wazo {
-  background-color: #98c451;
 }
